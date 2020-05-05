@@ -14,14 +14,16 @@
 	<name>catsp-fawb-appbuilder</name>
 	<description>fawb appbuilder for catsp</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -43,7 +45,41 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${jib.version}</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<to>
+						<image>${image.registry}/${image.repository}:${image.version}</image>
+						<auth>
+							<username>${username}</username>
+							<password>${password}</password>
+						</auth>
+					</to>
+					<container>
+						<ports>
+							<port>8080</port>
+						</ports>
+					</container>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
+	<properties>
+		<image.registry>registry.hub.docker.com</image.registry>
+		<image.repository>rkp201/${project.name}</image.repository>
+		<image.version>1.1</image.version>
+		<java.version>1.8</java.version>
+		<jib.version>1.2.0</jib.version>
+	</properties>
 </project>
