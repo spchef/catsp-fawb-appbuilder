@@ -26,6 +26,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -54,7 +62,7 @@
 					<execution>
 						<phase>install</phase>
 						<goals>
-							<goal>build</goal>
+							<goal>process</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -83,5 +91,6 @@
 		<image.version>1.1</image.version>
 		<java.version>1.8</java.version>
 		<jib.version>1.2.0</jib.version>
+		<commons.io.version>2.6</commons.io.version>
 	</properties>
 </project>
