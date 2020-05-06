@@ -1,0 +1,1 @@
+docker run -rm --name=catsp-fawb-c -v /usr/local/content/catsp:/usr/local/content/catsp -p 8080:8080 catsp-fawb

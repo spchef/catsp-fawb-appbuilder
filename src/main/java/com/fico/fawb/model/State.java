@@ -5,16 +5,10 @@ import com.fico.fawb.chain.impl.*;
 import org.springframework.context.ApplicationContext;
 
 public enum State {
-    EXTRACT_METADATA{
+    EXTRACT_MODEL {
         @Override
         public IBuildProcessor getBuildProcessor(ApplicationContext context) {
-            return context.getBean(MetadataExtractor.class);
-        }
-    },
-    CLONE_PROJECT{
-        @Override
-        public IBuildProcessor getBuildProcessor(ApplicationContext context) {
-            return context.getBean(ProjectCloner.class);
+            return context.getBean(ModelExtractor.class);
         }
     },
     PREPARE_BUILD{
